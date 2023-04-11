@@ -1,15 +1,13 @@
-#include "main.h"
+int get_endianness(void) {
+    int num = 1;
+    char* endianness = (char*)&num;
 
-/**
- * get_endianness - checks if a machine is little or big endian
- * Return: 0 for big, 1 for little
- */
-int get_endianness(void)
-{
-	unsigned int i = 1;
-	char *c = (char *) &i;
-
-	return (*c);
+    // If the first byte is 1, it means the system is little endian
+    // because the least significant byte comes first in memory.
+    if (*endianness == 1) {
+        return 1;  // Little endian
+    } else {
+        return 0;  // Big endian
+    }
 }
-
 
